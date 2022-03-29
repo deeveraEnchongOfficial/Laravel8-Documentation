@@ -1,0 +1,1690 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Ducumentation Page</title>
+  <style>
+    @import url("https://fonts.googleapis.com/css2?family=Roboto&display=swap");
+
+    :root {
+      /* Define GDScript highlight.js colors */
+      --background-color: #0e1012;
+      --text-color: #ccced3;
+
+      --symbol-color: #abc8ff;
+      --keyword-color: #ff7085;
+      --control_flow_keyword-color: #ff8ccc;
+      --base_type-color: #42ffc2;
+      --engine_type-color: #8effda;
+      --comment-color: grey;
+      --string-color: #ffeca1;
+      --number-color: #a1ffe0;
+      --function_definition-color: #66e6ff;
+    }
+
+    pre,
+    code,
+    code.hljs {
+      background: var(--background-color);
+      color: var(--text-color);
+    }
+
+    code.hljs .hljs-symbol {
+      color: var(--symbol-color);
+    }
+
+    code.hljs .hljs-keyword {
+      color: var(--keyword-color);
+    }
+
+    code.hljs .hljs-control_flow_keyword {
+      color: var(--control_flow_keyword-color);
+    }
+
+    code.hljs .hljs-base_type {
+      color: var(--base_type-color);
+    }
+
+    code.hljs .hljs-engine_type {
+      color: var(--engine_type-color);
+    }
+
+    code.hljs .hljs-comment {
+      color: var(--comment-color);
+    }
+
+    code.hljs .hljs-string {
+      color: var(--string-color);
+    }
+
+    code.hljs .hljs-number {
+      color: var(--number-color);
+    }
+
+    code.hljs .hljs-title {
+      color: var(--function_definition-color);
+    }
+
+    code.hljs .hljs-name,
+    code.hljs .hljs-tag,
+    code.hljs .hljs-attr {
+      color: var(--html-color);
+    }
+
+    code {
+      margin: 20px;
+      padding: 5px 20px;
+      display: block;
+      position: relative;
+      font-size: 0.9em;
+      text-align: initial;
+      tab-size: 4;
+      line-height: 2;
+    }
+
+    .inline_code {
+      margin: 0;
+      padding: 0 5px;
+      background-color: grey;
+      color: rgba(255, 255, 255, 0.75);
+      border: none;
+      display: inline-block;
+    }
+
+    .nohighlight {
+      padding: 10px 12px;
+    }
+
+    ::-webkit-scrollbar {
+      width: 10px;
+    }
+
+    ::-webkit-scrollbar-track {
+      background-color: #1c1e21;
+    }
+
+    ::-webkit-scrollbar-thumb {
+      background-color: #44474a;
+    }
+
+    ::-webkit-scrollbar-thumb:hover {
+      background-color: #57b3ff;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      font-family: Roboto, Helvetica, sans-serif;
+    }
+
+    body {
+      background-color: #202326;
+      color: white;
+      text-align: center;
+      line-height: 1.75;
+    }
+
+    p {
+      width: 80%;
+    }
+
+    #navbar {
+      position: fixed;
+      min-width: 350px;
+      background-color: #25282b;
+      top: 0;
+      left: 0;
+      width: 400px;
+      height: 100%;
+      border: none;
+    }
+
+    #logo {
+      display: block;
+      width: 90%;
+      height: auto;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    header {
+      margin: 10px;
+      text-align: center;
+      font-size: 30px;
+    }
+
+    #navbar header {
+      color: rgba(255, 255, 255, 0.75);
+    }
+
+    #navbar ul {
+      height: 70%;
+      padding: 0;
+      overflow-y: auto;
+      overflow-x: hidden;
+    }
+
+    #navbar li {
+      border: none;
+      list-style: none;
+      position: relative;
+      width: 100%;
+    }
+
+    #navbar a {
+      display: block;
+      padding: 10px 0;
+      color: #57b3ff;
+      text-decoration: none;
+      cursor: pointer;
+    }
+
+    #navbar a:hover {
+      background-color: #333639;
+      color: rgba(255, 255, 255, 0.75);
+    }
+
+    #main-doc {
+      position: absolute;
+      margin-left: 410px;
+      padding: 10px;
+      margin-bottom: 110px;
+    }
+
+    #main-doc header {
+      text-align: left;
+      margin: 0;
+    }
+
+    .main-section,
+    section article {
+      color: rgba(255, 255, 255, 0.75);
+    }
+
+    section article {
+      margin: 15px;
+      font-size: 0.96em;
+    }
+
+    section p {
+      text-align: left;
+      margin: 10px 0;
+    }
+
+    section li {
+      text-align: left;
+    }
+
+    blockquote {
+      padding: 10px 0 10px 20px;
+      border-left: 4px solid grey;
+      text-align: left;
+    }
+
+    @media only screen and (max-width: 900px) {
+
+      /* Mobile phones */
+      #navbar {
+        margin: 0;
+        padding: 0;
+        width: 100%;
+        max-height: 250px;
+        position: absolute;
+        top: 0;
+        z-index: 1;
+        box-shadow: 0 0 20px rgba(0, 0, 0, 0.25);
+      }
+
+      #navbar ul {
+        height: 60%;
+      }
+
+      #logo {
+        display: none;
+      }
+
+      #main-doc {
+        margin-left: 0;
+        margin-top: 250px;
+        position: relative;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <nav id="navbar">
+    <!-- <img id="logo" src="https://godotengine.org/themes/godotengine/assets/press/logo_large_color_dark.png" alt="Godot Engine Colored for Light Background Logo"> -->
+    <header>Laravel 8</header>
+    <ul>
+      <li>
+        <a class="nav-link" href="#Installation">Laravel 8 Installation</a>
+      </li>
+      <li>
+        <a class="nav-link" href="#Model&Migration">
+          Laravel 8 Model and Migration
+        </a>
+      </li>
+      <li>
+        <a class="nav-link" href="#Controller&ResourceController">
+          Laravel 8 Create Controller & Resource Controller
+        </a>
+      </li>
+      <li>
+        <a class="nav-link" href="#InsertData">Laravel 8 Insert Data</a>
+      </li>
+      <li>
+        <a class="nav-link" href="#Fetch_Data"> Laravel 8 Fetch Data </a>
+      </li>
+      <li>
+        <a class="nav-link" href="#Edit&Update">Laravel 8 Edit & Update</a>
+      </li>
+      <li><a class="nav-link" href="#Delete_Data">Laravel 8 Delete Data</a></li>
+      <li><a class="nav-link" href="#Login_Registration">
+          Laravel 8 Login & Registration
+        </a></li>
+      <li><a class="nav-link" href="#Get_Data">
+          Laravel 8 Get Data by Id
+        </a></li>
+      <li><a class="nav-link" href="#img_upload">
+          Laravel 8 Image Upload
+        </a></li>
+      <li><a class="nav-link" href="#Pagination">
+          Laravel 8 Pagination
+        </a></li>
+        <li><a class="nav-link" href="#RequestValidation">
+          Laravel 8 Form Request Validation
+        </a></li>
+        <li><a class="nav-link" href="#Custom_Messages_Request_Validation">
+          Laravel 8 Custom Messages in Request Validation
+        </a></li>
+        <li><a class="nav-link" href="#Success_Message">
+          Laravel 8 Success Message
+        </a></li>
+        <li><a class="nav-link" href="#Session_Flash">
+          Laravel 8 Session Flash Message
+        </a></li>
+        <li><a class="nav-link" href="#Create_Slug">
+          Laravel 8 Create Slug
+        </a></li>
+        <li><a class="nav-link" href="#multiple_ids">    
+          Laravel get data by multiple ids
+        </a></li>
+    </ul>
+  </nav>
+  <main id="main-doc">
+    <section class="main-section" id="Installation">
+      <header>How to install laravel 8</header>
+      <article>
+        <p>
+          In this tutorial, you will be learning how to install laravel so, to
+          install laravel we require a composer.
+        </p>
+        <p>
+          Composer is a PHP Dependency manager. so, first download and install
+          your composer from the link
+          <a href="https://getcomposer.org/">https://getcomposer.org/</a>.
+        </p>
+        <p>
+          If you have already installed composer, check with the given below
+          command in the <b>terminal:</b>
+        </p>
+        <pre><code class="language-gdscript">$ composer -V</code></pre>
+        <p>
+          <b>Method 1:</b> Lets, install the Laravel Installer as a global
+          Composer dependency on our system, so open your <b>terminal</b> and
+          execute the following command:
+        </p>
+        <pre><code class="nohighlight">$ composer global require laravel/installer</code></pre>
+        <p>
+          This above command will take few minutes to exexute, so after
+          successful installation above command, lets create a Laravel
+          Application.
+        </p>
+        <p>
+          This command will create a project of the
+          <b>Latest Version of Laravel application</b> by following command:
+        </p>
+        <pre><code class="language-gdscript">$ laravel new <span style="color:#FFFF00">nameOfProject</span></code></pre>
+        <br />
+        <p>
+          <b>Method 2:</b> Let's install Laravel 8 Via <b>Composer</b> with
+          specific version as following command:
+        </p>
+        <pre><code class="language-gdscript">$ composer create-project --prefer-dist laravel/laravel fundaBlog "8.0.*"</code></pre>
+        <p>
+          After successful execution of above command, laravel project
+          creation, open terminal and go to the laravel project path and give
+          a command to run the application as follows:
+        </p>
+        <pre><code class="language-gdscript">$ php artisan serve</code></pre>
+      </article>
+    </section>
+    <br />
+    <hr />
+    <section class="main-section" id="Model&Migration">
+      <header>How to make Model and Migration in Laravel 8</header>
+      <article>
+        <p>
+          In this tutorial, you will learn how to make model and migration in
+          laravel 8.
+        </p>
+        <p>
+          Before starting to create model and migration in laravel you need to
+          create a <a href="#Installation">new laravel project.</a>
+        </p>
+        <p><b>Method 1:</b></p>
+        <p>Let's create a Model in Laravel by following command:</p>
+        <pre><code class="language-gdscript">$ php artisan make:model <span style="color:#FFFF00">Student</span></code></pre>
+        <p>
+          In this above command the table name is students which is
+          highlighted with yellow color.
+        </p>
+        <br />
+        <p>
+          Let's create a Migration (mysql table) in Laravel by following
+          command: (table name will should always be plural in laravel)
+        </p>
+        <pre><code class="nohighlight">$ php artisan make:migration create_<span style="color:#FFFF00">students</span>_table</code></pre>
+        <p>
+          In this above command the table name is students which is
+          highlighted with yellow color.
+        </p>
+        <p>
+          After creating the Migration successfully in Laravel, add some
+          columns to the table, and then migrate this tables in to your
+          database by the following command:
+        </p>
+        <pre><code class="nohighlight">$ php artisan migrate</code></pre>
+        <br />
+        <p><b>Method 2:</b></p>
+        <p>
+          Let's create a Model and Migration both in Laravel by following
+          command:
+        </p>
+        <pre><code class="nohighlight">$ php artisan make:model Student -m</code></pre>
+        <p>
+          In this above we are creating two things one is Model and another
+          one is Migration with the name as Student. so,
+        </p>
+        <p>
+          First, Model will be created in the path: app/Models/Student.php
+        </p>
+        <p>Second, Migration will be created in the path:</p>
+        <p>database/migration/2021_02_16_create_students_table.php</p>
+      </article>
+      <hr />
+    </section>
+    <br />
+    <section class="main-section" id="Controller&ResourceController">
+      <header>
+        How to create a Controller and Resource Controller in Laravel 8
+      </header>
+      <article>
+        <p>
+          In this tutorials, you will be learning that how to create a
+          controller in Laravel 8. Before starting to create model and
+          migration in laravel you need to create a new laravel project
+        </p>
+        <br />
+        <p>
+          <b>Controller:</b> Let's begin with creating a Controller named
+          StudentController by the following command:
+        </p>
+        <pre><code class="language-gdscript">$ php artisan make:controller StudentController</code></pre>
+        <p>
+          After successful creation of this above command, you will find this
+          controller in the following path as:
+          app/Http/Controller/StudentController
+        </p>
+        <br />
+        <p>
+          <b><u>Resource Controller: </u></b>
+        </p>
+        <p>
+          This resource controller means, it will automatically create all the
+          functions inside your controller of basic required things, which is
+          total 7 functions created in this resource controller.
+        </p>
+        <p>Lets create a resource controller by the following command:</p>
+        <pre><code class="language-gdscript">$ php artisan make:controller StudentController --resource</code></pre>
+      </article>
+    </section>
+    <hr />
+    <br />
+    <section class="main-section" id="InsertData">
+      <header>
+        How to insert data into database in laravel 8 using Eloquent modelz
+      </header>
+      <article>
+        <p>
+          In this tutorial, you will learn how to insert data in laravel 8
+          using Eloquent model, so before getting started create a new laravel
+          project and give the <b>Database Connection</b> in .env file.
+        </p>
+        <p>
+          Now, to insert data in laravel 8 into database using Eloquent model.
+        </p>
+        <p>
+          <b>Step 1:</b> Create a <b>Model</b> and <b>Migration</b> by
+          following command:
+        </p>
+        <pre><code class="language-gdscript">$ php artisan make:model Student -m</code></pre>
+        <p>
+          <b>Model:</b> Lets open Student Model in following path:
+          <b>app/Model/Student.php</b>
+        </p>
+        <pre><code class="language-gdscript">
+            &lt;?php
+
+            namespace App\Models;
+            
+            use Illuminate\Database\Eloquent\Factories\HasFactory;
+            use Illuminate\Database\Eloquent\Model;
+            
+            class Student extends Model
+            {
+                use HasFactory;
+                protected $table = 'students';
+                protected $fillable = [
+                    'name',
+                    'email',
+                    'course',
+                    'section',
+                ];
+            }
+          </code></pre>
+        <p>
+          <b>Migration:</b> Lets open create_students_table.php
+          <b>Migration table</b> in following path:
+          <b>database/migrations/2021_05_30_create_students_table.php: </b>
+          (ADD this in your migration table)
+        </p>
+        <pre><code class="language-gdscript">public function up()
+            {
+                Schema::create('students', function (Blueprint $table) {
+                    $table->id();
+                    $table->string('name');
+                    $table->string('email');
+                    $table->string('course');
+                    $table->string('section');
+                    $table->timestamps();
+                });
+            }</code></pre>
+        <p>
+          Now lets migrate this students table into our database by following
+          command:
+        </p>
+        <pre><code class="language-gdscript">$ php artisan migrate</code></pre>
+        <p>
+          <b>Step 2:</b> Go to web.php file in the following path as:
+          routes/web.php and create a route (url) as follows:
+        </p>
+        <pre><code class="language-gdscript">
+            use App\Http\Controllers\StudentController;
+
+            Route::get('add-student', [StudentController::class, 'create']);
+            Route::post('add-student', [StudentController::class, 'store']);</code></pre>
+        <p>
+          <b>Step 3:</b> Create a Controller named StudentController by
+          following command:
+        </p>
+        <pre><code class="language-gdscript">$ php artisan make:controller StudentController</code></pre>
+        <p>
+          after successfully creating the controller lets write the code to
+          View the FORM and insert data from Form in Laravel as follows:
+        </p>
+        <pre><code class="language-gdscript">
+&lt;?php
+
+namespace App\Http\Controllers;
+
+use App\Models\Student;
+use Illuminate\Http\Request;
+
+class StudentController extends Controller
+{
+    public function create()
+    {
+        return view('student.create');
+    }
+
+    public function store(Request $request)
+    {
+        $student = new Student;
+        $student->name = $request->input('name');
+        $student->email = $request->input('email');
+        $student->course = $request->input('course');
+        $student->section = $request->input('section');
+        $student->save();
+        return redirect()->back()->with('status','Student Added Successfully');
+    }
+}</code></pre>
+        <p>
+          <b>Step 4:</b> Create a blade file named create.blade.php in a
+          student folder as show in following the path as:
+          <b>resource/views/student/create.blade.php</b>
+        </p>
+        <p>
+          Note: I have used Bootstrap 5 verison to design the User Interface.
+        </p>
+        <pre><code class="language-gdscript">
+@extends('layouts.app')
+
+@section('content')
+
+&lt;div class="container">
+    &lt;div class="row justify-content-center">
+        &lt;div class="col-md-6">
+
+            @if (session('status'))
+                &lt;h6 class="alert alert-success">{{ session('status') }}&lt;/h6>
+            @endif
+
+            &lt;div class="card">
+                &lt;div class="card-header">
+                    &lt;h4>Add Student&lt;/h4>
+                &lt;/div>
+                &lt;div class="card-body">
+
+                    &lt;form action="{{ url('add-student') }}" method="POST">
+                        @csrf
+
+                        &lt;div class="form-group mb-3">
+                            &lt;label for="">Student Name&lt;/label>
+                            &lt;input type="text" name="name" class="form-control">
+                        &lt;/div>
+                        &lt;div class="form-group mb-3">
+                            &lt;label for="">Student Email&lt;/label>
+                            &lt;input type="text" name="email" class="form-control">
+                        &lt;/div>
+                        &lt;div class="form-group mb-3">
+                            &lt;label for="">Student Course&lt;/label>
+                            &lt;input type="text" name="course" class="form-control">
+                        &lt;/div>
+                        &lt;div class="form-group mb-3">
+                            &lt;label for="">Student Section&lt;/label>
+                            &lt;input type="text" name="section" class="form-control">
+                        &lt;/div>
+                        &lt;div class="form-group mb-3">
+                            &lt;button type="submit" class="btn btn-primary">Save Student&lt;/button>
+                        &lt;/div>
+
+                    &lt;/form>
+
+                &lt;/div>
+            &lt;/div>
+        &lt;/div>
+    &lt;/div>
+&lt;/div>
+
+@endsection
+  </code></pre>
+        <p>
+          <b>Step 6:</b> Now we are done with the code of Insert data in
+          laravel. Let's Run the artisan command to start the application as
+          follows:
+        </p>
+        <pre><code class="language-gdscript">$ php artisan serve</code></pre>
+      </article>
+      <p>
+        after servering the artisan - goto: http://localhost:8000/add-student
+      </p>
+    </section>
+    <hr />
+    <br />
+    <section class="main-section" id="Fetch_Data">
+      <header>How to fetch/retrieve data from database in Laravel 8</header>
+      <article>
+        <p>
+          In this post, you will learn how to fetch / retrieve data from
+          database in laravel where we will be using Bootstrap 5 version to
+          design the user interface which is to design the HTML table to
+          display the data from database using eloquent model in laravel.
+        </p>
+        <p>
+          So before getting started, Create a new laravel project and give the
+          Database Connection in .env file.
+        </p>
+        <p>
+          <b>Step 1:</b> To fetch the data from database you have been already
+          created a <b>Model and Migration and a Controller</b> in laravel
+          application:
+        </p>
+        <p>
+          <b>Step 2:</b> Give a route to call the function in your controller
+          for calling the page in the following path: <b>routes/web.php</b>:
+        </p>
+        <pre><code class="language-gdscript">
+&lt;?php
+
+use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\StudentController;
+
+Route::get('students', [StudentController::class, 'index']);
+            </code></pre>
+        <p>
+          <b>Step 3:</b> Let's go to the controller in the following path :
+          <b>app/Http/Controllers/StudentController.php</b> file.
+        </p>
+        <pre><code class="language-gdscript">
+  &lt;?php
+
+  namespace App\Http\Controllers;
+  
+  use App\Models\Student;
+  use Illuminate\Http\Request;
+  
+  class StudentController extends Controller
+  {
+      public function index()
+      {
+          $student = Student::all();
+          return view('student.index', compact('student'));
+      }
+  }
+                          </code></pre>
+        <p>
+          <b>Step 4:</b> Create a blade file named
+          <b>index.blade.php</b> inside student folder as the following path:
+          <b>resources/views/student/index.blade.php</b> file as follows:
+        </p>
+        <pre><code class="language-gdscript">
+@extends('layouts.app')
+
+@section('content')
+
+&lt;div class="container">
+    &lt;div class="row">
+        &lt;div class="col-md-12">
+            &lt;div class="card">
+                &lt;div class="card-header">
+                    &lt;h4>How to Fetch data in Laravel 8&lt;/h4>
+                &lt;/div>
+                &lt;div class="card-body">
+
+                    &lt;table class="table table-bordered table-striped">
+                        &lt;thead>
+                            &lt;tr>
+                                &lt;th>ID&lt;/th>
+                                &lt;th>Name&lt;/th>
+                                &lt;th>Email&lt;/th>
+                                &lt;th>Course&lt;/th>
+                                &lt;th>Section&lt;/th>
+                                &lt;th>Edit&lt;/th>
+                                &lt;th>Delete&lt;/th>
+                            &lt;/tr>
+                        &lt;/thead>
+                        &lt;tbody>
+                            @foreach ($student as $item)
+                            &lt;tr>
+                                &lt;td>{{ $item->id }}&lt;/td>
+                                &lt;td>{{ $item->name }}&lt;/td>
+                                &lt;td>{{ $item->email }}&lt;/td>
+                                &lt;td>{{ $item->course }}&lt;/td>
+                                &lt;td>{{ $item->section }}&lt;/td>
+                                &lt;td>
+                                    &lt;a href="" class="btn btn-primary btn-sm">Edit&lt;/a>
+                                &lt;/td>
+                                &lt;td>
+                                    &lt;a href="" class="btn btn-danger btn-sm">Delete&lt;/a>
+                                &lt;/td>
+                            &lt;/tr>
+                            @endforeach
+                        &lt;/tbody>
+                    &lt;/table>
+
+                &lt;/div>
+            &lt;/div>
+        &lt;/div>
+    &lt;/div>
+&lt;/div>
+
+@endsection
+                                            </code></pre>
+        <p>
+          Now, you can successfully run the application by the following
+          command:
+        </p>
+        <pre><code class="language-gdscript">$ php artisan serve</code></pre>
+        <p>
+          now lets go to the browser at the link:
+          http://localhost:8000/students
+        </p>
+      </article>
+    </section>
+    <hr />
+    <br />
+    <section class="main-section" id="Edit&Update">
+      <header>Update data into database in laravel 8</header>
+      <article>
+        <p>
+          In this tutorial, you will be learning how to edit and update data
+          from database using Eloquent Model in Laravel 8.
+        </p>
+        <p>
+          So guys, to edit and update data in laravel, you have to create a
+          laravel project, connect your database in <b>.env file</b>, then you
+          need to create you Model, Controller and Migration to insert & fetch
+          data in laravel.
+        </p>
+        <p>
+          <b>Step 1:</b> Fetch data from database in
+          <b>index.blade.php</b> file in the following path:
+          <b>resources/views/student/index.blade.php</b>
+        </p>
+        <p>
+          Let fetch the data in HTML Table to make edit button in file as
+          follows:
+        </p>
+        <pre><code class="language-gdscript">
+@extends('layouts.app')
+
+@section('content')
+
+&lt;div class="container">
+    &lt;div class="row">
+        &lt;div class="col-md-12">
+            &lt;div class="card">
+                &lt;div class="card-header">
+                    &lt;h4>How to Edit and Update Data in Laravel
+                        &lt;a href="{{ url('add-student') }}" class="btn btn-primary float-end">Add Student&lt;/a>
+                    &lt;/h4>
+                &lt;/div>
+                &lt;div class="card-body">
+
+                    &lt;table class="table table-bordered table-striped">
+                        &lt;thead>
+                            &lt;tr>
+                                &lt;th>ID&lt;/th>
+                                &lt;th>Name&lt;/th>
+                                &lt;th>Email&lt;/th>
+                                &lt;th>Course&lt;/th>
+                                &lt;th>Section&lt;/th>
+                                &lt;th>Edit&lt;/th>
+                            &lt;/tr>
+                        &lt;/thead>
+                        &lt;tbody>
+                            @foreach ($student as $item)
+                            &lt;tr>
+                                &lt;td>{{ $item->id }}&lt;/td>
+                                &lt;td>{{ $item->name }}&lt;/td>
+                                &lt;td>{{ $item->email }}&lt;/td>
+                                &lt;td>{{ $item->course }}&lt;/td>
+                                &lt;td>{{ $item->course }}&lt;/td>
+                                &lt;td>
+                                    &lt;a href="{{ url('edit-student/'.$item->id) }}" class="btn btn-primary btn-sm">Edit&lt;/a>
+                                &lt;/td>
+                            &lt;/tr>
+                            @endforeach
+                        &lt;/tbody>
+                    &lt;/table>
+
+                &lt;/div>
+            &lt;/div>
+        &lt;/div>
+    &lt;/div>
+&lt;/div>
+
+@endsection
+          </code></pre>
+        <p>
+          <b>Step 2:</b> Create a <b>edit.blade.php</b> file in the following
+          path: <b>resources/views/student/edit.blade.php</b> to edit and
+          update data as follows:
+        </p>
+        <pre><code class="nohighlight">
+@extends('layouts.app')
+
+@section('content')
+
+&lt;div class="container">
+    &lt;div class="row">
+        &lt;div class="col-md-12">
+
+            @if (session('status'))
+                &lt;h6 class="alert alert-success">{{ session('status') }}&lt;/h6>
+            @endif
+
+            &lt;div class="card">
+                &lt;div class="card-header">
+                    &lt;h4>Edit & Update Student
+                        &lt;a href="{{ url('students') }}" class="btn btn-danger float-end">BACK&lt;/a>
+                    &lt;/h4>
+                &lt;/div>
+                &lt;div class="card-body">
+
+                    &lt;form action="{{ url('update-student/'.$student->id) }}" method="POST">
+                        @csrf
+                        @method('PUT')
+
+                        &lt;div class="form-group mb-3">
+                            &lt;label for="">Student Name&lt;/label>
+                            &lt;input type="text" name="name" value="{{$student->name}}" class="form-control">
+                        &lt;/div>
+                        &lt;div class="form-group mb-3">
+                            &lt;label for="">Student Email&lt;/label>
+                            &lt;input type="text" name="email" value="{{$student->email}}" class="form-control">
+                        &lt;/div>
+                        &lt;div class="form-group mb-3">
+                            &lt;label for="">Student Course&lt;/label>
+                            &lt;input type="text" name="course" value="{{$student->course}}" class="form-control">
+                        &lt;/div>
+                        &lt;div class="form-group mb-3">
+                            &lt;label for="">Student Section&lt;/label>
+                            &lt;input type="text" name="section" value="{{$student->section}}" class="form-control">
+                        &lt;/div>
+                        &lt;div class="form-group mb-3">
+                            &lt;button type="submit" class="btn btn-primary">Update Student&lt;/button>
+                        &lt;/div>
+
+                    &lt;/form>
+
+                &lt;/div>
+            &lt;/div>
+        &lt;/div>
+    &lt;/div>
+&lt;/div>
+
+@endsection
+          </code></pre>
+        <p>
+          <b>Step 3:</b> Give a route to call the function in your controller
+          for calling the page in the following path: <b>routes/web.php</b> as
+          follows:
+        </p>
+        <pre><code class="nohighlight">
+&lt;?php
+
+use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\StudentController;
+
+Route::get('students', [StudentController::class, 'index']);
+Route::get('edit-student/{id}', [StudentController::class, 'edit']);
+Route::put('update-student/{id}', [StudentController::class, 'update']);
+          </code></pre>
+        <p>
+          <b>Step 4:</b> Let's go to the controller in the following path :
+          <b>app/Http/Controllers/StudentController.php</b> file.
+        </p>
+        <pre><code class="nohighlight">
+&lt;?php
+
+namespace App\Http\Controllers;
+
+use App\Models\Student;
+use Illuminate\Http\Request;
+
+class StudentController extends Controller
+{
+    public function index()
+    {
+        $student = Student::all();
+        return view('student.index', compact('student'));
+    }
+
+    public function edit($id)
+    {
+        $student = Student::find($id);
+        return view('student.edit', compact('student'));
+    }
+
+    public function update(Request $request, $id)
+    {
+        $student = Student::find($id);
+        $student->name = $request->input('name');
+        $student->email = $request->input('email');
+        $student->course = $request->input('course');
+        $student->section = $request->input('section');
+        $student->update();
+        return redirect()->back()->with('status','Student Updated Successfully');
+    }
+}
+          </code></pre>
+        <p>
+          <b>Step 5:</b> We are successfully done with Edit and Update Coding, lets test it guys by serving this
+          application as following command:
+        </p>
+        <pre><code class="nohighlight">$ php artisan serve</code></pre>
+        <p>now lets go to the browser at the link: http://localhost:8000/students</p>
+      </article>
+    </section>
+    <hr>
+    <br />
+    <section class="main-section" id="Delete_Data">
+      <header>How to delete data from database using Eloquent</header>
+      <article>
+        <p>In this post, you will be learning about how to delete data from database using Eloquent Model in Laravel 8,
+          where we will fetch the data in html table and create one simple Delete button with <a> tag and specifing the
+            url or path to delete data with the following routes.</p>
+        <p>So guys, Lets get started.</p>
+        <p>Before starting, as we completed Creating of Laravel 8 Project, Database Connectivity, Insert data, Fetch
+          data & Edit and Update data in laravel and now Lets start with Deleting the data.</p>
+        <p><b>Step 1:</b> add below html table <tr> with <a> tag in your fetched record table as follows:</p>
+        <pre><code class="language-gdscript">
+&lt;td>
+    &lt;a href="{{ url('delete-student/'.$item->id) }}" class="btn btn-danger btn-sm">Delete&lt;/a>
+&lt;/td>
+          </code></pre>
+        <p><b>Step 2:</b> Create a route in the following path routes/web.php as follows:</p>
+        <pre><code class="nohighlight">
+&lt;?php
+use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\StudentController;
+
+Route::delete('delete-student/{id}', [StudentController::class, 'destroy']);
+          </code></pre>
+        <p><b>Step 3:</b> To delete the data, paste the below code in Controller as we created in
+          <b>app/Http/Controllers/StudentController.php</b></p>
+        <pre><code class="nohighlight">
+&lt;?php
+
+namespace App\Http\Controllers;
+
+use App\Models\Student;
+use Illuminate\Http\Request;
+
+class StudentController extends Controller
+{
+    public function destroy($id)
+    {
+        $student = Student::find($id);
+        $student->delete();
+        return redirect()->back()->with('status','Student Deleted Successfully');
+    }
+}
+          </code></pre>
+        <p>That's it guys.</p>
+      </article>
+    </section>
+    <hr>
+    <br />
+    <section class="main-section" id="Login_Registration">
+      <header>Laravel 8 authentication tutorial | Login and Register in Laravel 8</header>
+      <article>
+        <p>In this article, you will be learning how to make login and registration system in laravel 8 by artisan
+          command.</p>
+        <p><b>Step 1:</b> Let's install Laravel 8 as we have seen how to install laravel 8 on this link: <a
+            href="#Installation">Click here</a></p>
+        <p><b>Step 2:</b> Let's setup the Laravel File .</p>
+        <p>1st : (dot) .env file for database connection:</p>
+        <pre><code class="language-gdscript">
+DB_CONNECTION=mysql
+DB_HOST=127.0.0.1
+DB_PORT=3306
+DB_DATABASE=database_name
+DB_USERNAME=root
+DB_PASSWORD=
+          </code></pre>
+        <p>2nd : Go to path : app/Providers/AppServiceProvider.php file and add the below code inside boot function to
+          make all your database schema default string length value to 191 values.</p>
+        <pre><code class="nohighlight">
+use Illuminate\Support\Facades\Schema;
+
+public function boot()
+{
+    Schema::defaultStringLength(191);
+}
+          </code></pre>
+        <p><b>Step 3:</b> Now lets give the below command to generate the Auth Login and Register system in laravel 8.
+        </p>
+        <p>First, Install you laravel/ui as follows:</p>
+        <pre><code class="nohighlight">$ composer require laravel/ui</code></pre>
+        <p>Note: (It only installs your Login and Registration System without any 3rd application like Vue, React, or
+          Bootstrap.)</p>
+        <p>after your <b>ui:auth</b> Authentication Scaffoldings generated successfully, Lets Migrate the table from
+          laravel application to our database by below command:</p>
+        <pre><code class="nohighlight">$ php artisan migrate</code></pre>
+        <p>after successful migration into our database. lets start to serve the application by following command:</p>
+        <pre><code class="nohighlight">$ php artisan serve</code></pre>
+        <p>We have successfully done with Login and Registration functionality in Laravel 8.</p>
+        <p>lets start at http://localhost:8000/login</p>
+        <p><b>Step 4:</b> If you had seen your Login and Register FORM it would be without any CSS or Bootstrap design
+          guys so, to solve that you have to add or install Bootstrap in our laravel 8 application guys as shown below:
+        </p>
+        <p>Open file: <b>resources/views/layouts/app.blade.php</b> file.</p>
+        <p>add the CSS link in head tag</p>
+        <pre><code class="nohighlight">
+&lt;head>
+
+    &lt;!-- Styles -->
+    &lt;link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous">
+
+&lt;/head>
+          </code></pre>
+        <p>add the SCRIPT links before ending of the BODY tag.</p>
+        <pre><code class="nohighlight">
+&lt;script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+&lt;script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-gtEjrD/SeCtmISkJkNUaaKMoLD0//ElJ19smozuHV6z3Iehds+3Ulb9Bn9Plx0x4" crossorigin="anonymous"></script>
+                      </code></pre>
+        <p>Now, the Login and register form is designed successfully using Boostrap 5.</p>
+      </article>
+    </section>
+    <hr>
+    <br />
+    <section class="main-section" id="Get_Data">
+      <header>How to get data from database by id in laravel 8</header>
+      <article>
+        <p>In this tutorial, how to get data from database by id in laravel 8, where we will find the single row</p>
+        <p>record from database using laravel eloquent model with find() method. Example given below:</p>
+        <p><b>Example 1:</b></p>
+        <pre><code class="language-gdscript">YourModel::find($id);</code></pre>
+        <p><b>Example 2:</b></p>
+        <pre><code class="nohighlight">YourModel::where('id',$id)->first();</code></pre>
+        <br>
+        <p><b>Demo:</b></p>
+        <p><b>Step 1:</b> Goto Controller and create a edit() function and call Eloquent model ( <b>YourModel.php</b> )
+          to get data by id from database in laravel.</p>
+        <pre><code class="nohighlight">
+public function edit($id)
+  {
+    $student = YourModel::find($id);
+    return $student;
+  }
+          </code></pre>
+
+        <p><b>Step 2:</b> create a path in routes/web.php file as follows:</p>
+
+        <pre><code class="nohighlight">Route::get('get-data/{your_id}', [HomeController::class, 'edit']);</code></pre>
+
+      </article>
+    </section>
+    <hr>
+    <br />
+    <section class="main-section" id="img_upload">
+      <header>How to upload Image in laravel 8</header>
+      <article>
+        <p>In this tutorail, you will be learning about image upload in laravel. Where we create a form and upload image
+          in folder and save its name into database in laravel 8.</p>
+        <p>record from database using laravel eloquent model with find() method. Example given below:</p>
+        <p>We will be using Bootstrap 5 to design the user interface. Let's begin for upload image in laravel 8.</p>
+        <p><b>Step 1:</b> Create a migration table named students with following command:</p>
+        <pre><code class="language-gdscript"> php artisan make:migration create_students_table</code></pre>
+        <pre><code class="nohighlight">
+&lt;?php
+
+use Illuminate\Database\Migrations\Migration;
+use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Support\Facades\Schema;
+
+class CreateStudentsTable extends Migration
+{
+    /**
+     * Run the migrations.
+     *
+     * @return void
+     */
+    public function up()
+    {
+        Schema::create('students', function (Blueprint $table) {
+            $table->id();
+            $table->string('name');
+            $table->string('image');
+            $table->timestamps();
+        });
+    }
+
+    /**
+     * Reverse the migrations.
+     *
+     * @return void
+     */
+    public function down()
+    {
+        Schema::dropIfExists('students');
+    }
+}
+          </code></pre>
+        <p><b>Step 2:</b> Create a Eloquent Model named Student with following command:</p>
+        <pre><code class="nohighlight">$ php artisan make:model Student</code></pre>
+
+        <pre><code class="nohighlight">
+&lt;?php
+
+namespace App\Models;
+
+use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Model;
+
+class Student extends Model
+{
+    use HasFactory;
+
+    protected $table = 'students';
+
+    protected $fillable = [
+        'name',
+        'image',
+    ];
+}
+          </code></pre>
+        <p><b>Step 4:</b> Create a blade file named <b>studentCreate.blade.php</b> in the following path:
+          <b>resources/views/student.blade.php</b> to create a form to upload image.</p>
+        <pre><code class="nohighlight">
+@extends('layouts.app')
+
+@section('content')
+
+&lt;div class="container">
+    &lt;div class="row justify-content-center">
+        &lt;div class="col-md-6">
+
+            &lt;div class="card">
+                &lt;div class="card-header">
+                    &lt;h4>Student Form&lt;/h4>
+                &lt;/div>
+                &lt;div class="card-body">
+
+                    &lt;form action="{{ url('save-student') }}" method="POST" enctype="multipart/form-data">
+                        @csrf
+
+                        &lt;div class="mb-3">
+                            &lt;label for="">Name&lt;/label>
+                            &lt;input type="text" name="name" required class="form-control">
+                        &lt;/div>
+                        &lt;div class="mb-3">
+                            &lt;label for="">Upload Image&lt;/label>
+                            &lt;input type="file" name="image" required class="course form-control">
+                        &lt;/div>
+                        &lt;div class="mb-3">
+                            &lt;button type="submit" class="btn btn-primary">Save&lt;/button>
+                        &lt;/div>
+
+                    &lt;/form>
+
+                &lt;/div>
+            &lt;/div>
+
+        &lt;/div>
+    &lt;/div>
+&lt;/div>
+
+@endsection
+                    </code></pre>
+        <p><b>Step 5:</b> Create a route in the following path: <b>routes/web.php</b> and paste the below code.</p>
+        <pre><code class="nohighlight">Route::post('students', [App\Http\Controllers\StudentController::class, 'store']);</code></pre>
+        <p><b>Step 6:</b> serve the artisan and start uploading the image.</p>
+        <pre><code class="nohighlight">$ php artisan serve</code></pre>
+        <p>That's it. You will find your image in your <b>uploads/students</b> folder.</p>
+      </article>
+    </section>
+    <hr>
+    <br />
+    <section class="main-section" id="Pagination">
+      <header>How to create pagination in laravel</header>
+      <article>
+        <p>In this post, you will learn how to make / create pagination in laravel 8.</p>
+        <p>The paginate method counts the total number of records matched by the query before retrieving the records
+          from the database. This is done so that the paginator knows how many pages of records there are in total.</p>
+        <p>So guys now, you have already setup with your laravel application and now you want to add pagination in your
+          page for your required Model. eg: Student Model. </p>
+        <p><b>Step 1:</b> Create a route in <b>routes/web.php</b> file and paste below code:</p>
+        <pre><code class="language-gdscript">
+&lt;?php
+use Illuminate\Support\Facades\Route;
+
+Route::get('students', [App\Http\Controllers\StudentController::class, 'index']);
+          </code></pre>
+        <p><b>Step 2:</b> go to your controller, so I am using <b>StudentController.php</b> and use the
+          <b>paginate()</b> while calling your Model as given below:</p>
+        <pre><code class="nohighlight">
+&lt;?php
+
+namespace App\Http\Controllers;
+
+use App\Models\Student;
+use Illuminate\Http\Request;
+
+class StudentController extends Controller
+{
+    public function index()
+    {
+        $students = Student::paginate(10);
+        return view('student.index', compact('students'));
+    }
+}
+          </code></pre>
+        <p><b>Step 3</b>: Create a blade file <b>index.blade.php</b> in <b>student</b> folder OR go to the following
+          path in your application and call the <b>links()</b> as given below: </p>
+        <pre><code class="nohighlight">
+{{-- Example --}}
+&lt;div class="float-end">
+    {{ $students->links() }}
+&lt;/div>
+          </code></pre>
+
+        <pre><code class="nohighlight">
+@extends('layouts.app')
+
+@section('content')
+
+&lt;div class="container">
+    &lt;div class="row">
+        &lt;div class="col-md-12">
+            &lt;div class="card">
+                &lt;div class="card-header">
+                    &lt;h4>How to create Pagination in Laravel 8&lt;/h4>
+                &lt;/div>
+                &lt;div class="card-body">
+
+                    &lt;table class="table table-bordered table-striped">
+                        &lt;thead>
+                            &lt;tr>
+                                &lt;th>ID&lt;/th>
+                                &lt;th>Name&lt;/th>
+                                &lt;th>Email&lt;/th>
+                                &lt;th>Course&lt;/th>
+                                &lt;th>Section&lt;/th>
+                                &lt;th>Edit&lt;/th>
+                                &lt;th>Delete&lt;/th>
+                            &lt;/tr>
+                        &lt;/thead>
+                        &lt;tbody>
+                            @foreach ($students as $item)
+                            &lt;tr>
+                                &lt;td>{{ $item->id }}&lt;/td>
+                                &lt;td>{{ $item->name }}&lt;/td>
+                                &lt;td>{{ $item->email }}&lt;/td>
+                                &lt;td>{{ $item->course }}&lt;/td>
+                                &lt;td>{{ $item->section }}&lt;/td>
+                            &lt;/tr>
+                            @endforeach
+                        &lt;/tbody>
+                    &lt;/table>
+
+                    &lt;div class="float-end">
+                        {{ $students->links() }}
+                    &lt;/div>
+
+                &lt;/div>
+            &lt;/div>
+        &lt;/div>
+    &lt;/div>
+&lt;/div>
+          </code></pre>
+        <p>Thank you.</p>
+      </article>
+    </section>
+    <hr>
+    <br />
+    <section class="main-section" id="RequestValidation">
+      <header>How to make Form Request Validation in Laravel 8</header>
+      <article>
+        <p>In this article, you will be learning how to do validation in laravel using form request validation in laravel 8 application.</p>
+        <p>So guys, you have already created your application and going to insert data where you will be using Form Request Validation. We will be using Student Data Example. </p>
+        <p>Let's get started with inserting data using laravel 8 form request validation.</p>
+        <p><b>Step 1:</b> Create the route</p>
+        <pre><code class="language-gdscript">
+Route::get('students', [App\Http\Controllers\StudentController::class,'create']);
+Route::post('students', [App\Http\Controllers\StudentController::class,'store']);
+          </code></pre>
+        <p><b>Step 2:</b> Create a Request Class with the following command:</p>
+        <pre><code class="nohighlight">$ php artisan make:request StudentFormRequest</code></pre>
+
+        <p>After successfully creating of Form Request Validation Class, lets setup the rules for it as below:</p>
+
+        <pre><code class="nohighlight">
+&lt;?php
+
+namespace App\Http\Requests;
+
+use Illuminate\Foundation\Http\FormRequest;
+
+class StudentFormRequest extends FormRequest
+{
+    /**
+     * Determine if the user is authorized to make this request.
+     *
+     * @return bool
+     */
+    public function authorize()
+    {
+        return true;
+    }
+
+    /**
+     * Get the validation rules that apply to the request.
+     *
+     * @return array
+     */
+    public function rules()
+    {
+        $rules = [
+            'fullname' => [
+                'required',
+                'string',
+                'max:191',
+            ],
+            'email' => [
+                'required',
+                'email',
+                'max:191',
+                'unique:students,email',
+            ],
+            'phone' => [
+                'required',
+                'digits:10',
+            ],
+            'course' => [
+                'required',
+                'string',
+                'max:191',
+            ],
+        ];
+
+        return $rules;
+    }
+
+}
+          </code></pre>
+<p><b>Step 3:</b> Go to your controller, example: StudentController.php and create the two function for create form and store form as below:</p>
+        <pre><code class="nohighlight">
+  &lt;?php
+
+  namespace App\Http\Controllers;
+  
+  use App\Http\Requests\StudentFormRequest;
+  use App\Models\Student;
+  use Illuminate\Http\Request;
+  
+  class StudentController extends Controller
+  {
+      public function create()
+      {
+          return view('student.create');
+      }
+  
+      public function store(StudentFormRequest $request)
+      {
+          $data = $request->validated();
+          Student::create($data);
+          return redirect('/students')->with('message','Student Added Successfully');
+      }
+  }
+          </code></pre>
+        <p><b>Step 4:</b> Create a file named <b>create.blade.php</b> in folder named <b>student</b> in the following path: <b>resources/views/student/create.blade.php</b> and paste the give code:</p>
+        <pre><code class="nohighlight">
+@extends('layouts.app')
+
+@section('content')
+
+    &lt;div class="py-4">
+        &lt;div class="container">
+            &lt;div class="row">
+                &lt;div class="col-md-12">
+
+                    @if (session('message'))
+                        &lt;h5 class="alert alert-success">{{ session('message') }}&lt;/h5>
+                    @endif
+
+                    @if ($errors->any())
+                        &lt;ul class="alert alert-warning">
+                            @foreach ($errors->all() as $error)
+                            &lt;li> {{ $error }}&lt;/li>
+                            @endforeach
+                        &lt;/ul>
+                    @endif
+
+                    &lt;div class="card">
+                        &lt;div class="card-header">
+                            &lt;h4>Add Student with Form Request Validation in Laravel 8
+                                &lt;a href="{{ url('students') }}" class="btn btn-danger float-end">BACK&lt;/a>
+                            &lt;/h4>
+                        &lt;/div>
+                        &lt;div class="card-body">
+                            &lt;form action="{{ url('students') }}" method="POST">
+                                @csrf
+
+                                &lt;div class="mb-3">
+                                    &lt;label>Full Name&lt;/label>
+                                    &lt;input type="text" name="fullname" class="form-control">
+                                &lt;/div>
+                                &lt;div class="mb-3">
+                                    &lt;label>Email ID&lt;/label>
+                                    &lt;input type="text" name="email" class="form-control">
+                                &lt;/div>
+                                &lt;div class="mb-3">
+                                    &lt;label>Phone&lt;/label>
+                                    &lt;input type="text" name="phone" class="form-control">
+                                &lt;/div>
+                                &lt;div class="mb-3">
+                                    &lt;label>Course&lt;/label>
+                                    &lt;input type="text" name="course" class="form-control">
+                                &lt;/div>
+                                &lt;div class="mb-3">
+                                    &lt;button type="submit" class="btn btn-primary">Save Student&lt;/button>
+                                &lt;/div>
+                            &lt;/form>
+                        &lt;/div>
+                    &lt;/div>
+                &lt;/div>
+            &lt;/div>
+        &lt;/div>
+    &lt;/div>
+
+@endsection
+                  </code></pre>
+        <p>That's it. Now, you are done with Form Request Validation in Laravel 8.</p>
+      </article>
+    </section>
+    <hr>
+    <br />
+    <section class="main-section" id="Custom_Messages_Request_Validation">
+      <header>How to set custom error message using laravel Form Request Validation in Laravel 8</header>
+      <article>
+        <p>In this article, you will be learning how to set custom error messages using form request validation in laravel 8.</p>
+        <p>So guys, you will already be knowing about how to make Form Request Validation in Laravel and now, you want to set a custom messages to show about the errors as per your requirement. </p>
+        <p>So, we will be using an example of Student Data:</p>
+        <p><b>Step 1:</b> Create Request Class (Form Request Validation in Laravel) by following command: </p>
+        <pre><code class="language-gdscript">$ php artisan make:request StudentFormRequest</code></pre>
+        <p><b>Step 2:</b> After successfully create Request Class, paste the below code:</p>
+        <p>custom message are set in messages() function below</p>
+        <pre><code class="nohighlight">
+&lt;?php
+
+namespace App\Http\Requests;
+
+use Illuminate\Foundation\Http\FormRequest;
+
+class StudentFormRequest extends FormRequest
+{
+    /**
+     * Determine if the user is authorized to make this request.
+     *
+     * @return bool
+     */
+    public function authorize()
+    {
+        return true;
+    }
+
+    /**
+     * Get the validation rules that apply to the request.
+     *
+     * @return array
+     */
+    public function rules()
+    {
+        $rules = [
+            'fullname' => [
+                'required',
+                'string',
+                'max:191',
+            ],
+            'email' => [
+                'required',
+                'email',
+                'max:191',
+                'unique:students,email',
+            ],
+            'phone' => [
+                'required',
+                'digits:10',
+            ],
+            'course' => [
+                'required',
+                'string',
+                'max:191',
+            ],
+        ];
+
+        return $rules;
+    }
+
+    public function messages()
+    {
+        return [
+            'fullname.required' => 'Please enter your fullname',
+            'email.required' => 'Please enter your email id',
+            'email.email' => 'Please enter valid email id',
+            'phone.required' => 'Please enter your phone no',
+            'course.required' => 'Please enter your course',
+        ];
+    }
+}
+        </code></pre>
+
+        <p>Thanks for reading.</p>
+      </article>
+    </section>
+    <hr>
+    <br />
+    <section class="main-section" id="Success_Message">
+      <header>How to display success message in laravel 8</header>
+      <article>
+        <p>In this article, you will be learning how to show / display a success message in laravel 8.</p>
+        <p>So guys, basically after form submit or any request performed, we want to show success message.</p>
+        <p>Lets see with few example as given below to display success message:</p>
+        <p>Lets see with few example as given below to display success message:</p>
+        <p><b>Example 1:</b></p>
+        <p>this below code is performed on your controller side:</p>
+        <pre><code class="language-gdscript">return redirect()->back()->with('message',"This is Success Message");</code></pre>
+        <p>Displaying message if it exists. (in blade file):</p>
+        <pre><code class="nohighlight">
+@if(session()->has('message'))
+    &lt;div class="alert alert-success">
+        {{ session()->get('message') }}
+    &lt;/div>
+@endif
+        </code></pre>
+
+        <p><b>Example 2:</b></p>
+        <p>this below code is performed on your controller side:</p>
+        <pre><code class="nohighlight">return redirect()->back()->with('message',"This is Success Message");</code></pre>
+                  <p>Displaying message if it exists. (in blade file):</p>
+                  <pre><code class="nohighlight">
+@if(session('message'))
+    &lt;h6 class="alert alert-success">
+        {{ session('message') }}
+    &lt;/h6>
+@endif
+                            </code></pre>
+                            <p>Thanks for reading.</p>
+      </article>
+    </section>
+    <hr>
+    <br />
+    <section class="main-section" id="Session_Flash">
+      <header>How to set session flash message and display in laravel 8</header>
+      <article>
+        <p>In this article, you will be learning about how to set or show flash message in laravel 8, where flash message works with the help of session.</p>
+        <p>So, Lets see few example about it:</p>
+        <p><b>Example 1: </b></p>
+        <p>Paste below code in controller:</p>
+
+        <pre><code class="language-gdscript">
+use Illuminate\Support\Facades\Session;
+
+Session::flash('message','This is a flash message!');
+        </code></pre>
+        <p>Paste below code in blade file:</p>
+        <pre><code class="nohighlight">
+@if(Session::has('message'))
+    &lt;h5 class="alert alert-success">{{Session::get('message') }}</h5>
+@endif
+        </code></pre>
+
+        <p><b>Example 2:</b></p>
+        <p>Paste below code in controller:</p>
+        <pre><code class="nohighlight">
+use Illuminate\Support\Facades\Session;
+
+Session::flash('flash_message', 'This is a flash message');
+Session::flash('flash_type', 'alert-success');
+        </code></pre>
+                  <p>Paste below code in blade file:</p>
+                  <pre><code class="nohighlight">
+@if( Session::has('flash_message') )
+    &lt;div class="alert {{ Session::get('flash_type') }}">
+        &lt;h5>{{ Session::get('flash_message') }}&lt;/h5>
+    &lt;/div>
+@endif
+                            </code></pre>
+                            <p>Thanks for reading.</p>
+      </article>
+    </section>
+    <hr>
+    <br />
+    <section class="main-section" id="Create_Slug">
+      <header>How to create slug in laravel 8 using slug function</header>
+      <article>
+        <p>In this post, you will be learning about how to generate a valid slug in laravel 8 using str_slug function.</p>
+        <p>So guys, lets see few example, that how we can make slug or generate slug in laravel.</p>
+        <p><b>Example 1: </b>In your controller</p>
+
+        <pre><code class="language-gdscript">
+use Illuminate\Support\Str;
+
+$slug = Str::slug($request->slug);
+return $slug;
+        </code></pre>
+        <p><b>Example 2:</b> Generate Slug using str_slug() function.</p>
+        <pre><code class="nohighlight">
+$slug = str_slug($request->slug);
+return $slug;
+        </code></pre>
+
+        <p><b>Example 3:</b>How to create a slug customly / manually in php</p>
+
+        <pre><code class="nohighlight">
+$string = preg_replace('/[^A-Za-z0-9\-]/', '-', $request->slug); //Removed all Special Character and replace with hyphen
+$final_slug = preg_replace('/-+/', '-', $string); //Removed double hyphen
+$slug = strtolower($final_slug);
+return $slug;
+        </code></pre>
+                  <p>Thank you.</p>
+
+      </article>
+    </section>
+    <hr>
+    <br />
+    <section class="main-section" id="multiple_ids">
+      <header>How to find data by multiple ids in laravel</header>
+      <article>
+        <p>In this post, we are learning about how to get or retrieve data by multiple ids in laravel.</p>
+        <p>So, lets see with different examples.</p>
+        <p><b>Example 1: </b>Get data using <b>findMany()</b> method in laravel.</p>
+
+        <pre><code class="language-gdscript">$models = Model::findMany([1, 2, 3]);</code></pre>
+        <p><b>Example 2:</b> You can also pass an array to <b>find()</b> and it will internally call <b>findMany()</b>:</p>
+        <pre><code class="nohighlight">$models = Model::find([1, 2, 3]);</code></pre>
+
+        <p><b>Example 3:</b>we can use the <b>whereIn()</b> method to find mulitple data by specifying the column name:</p>
+
+        <pre><code class="nohighlight">$models = Model::whereIn('id', [1, 2, 3])->get();</code></pre>
+                  <p>Thank you.</p>
+
+      </article>
+    </section>
+    <hr>
+  </main>
+
+  <script></script>
+</body>
+
+</html>
