@@ -282,7 +282,7 @@
         <a class="nav-link" href="#Fetch_Data"> Laravel 8 Fetch Data </a>
       </li>
       <li>
-        <a class="nav-link" href="#Edit&Update">Laravel 8 Edit & Update</a>
+        <a class="nav-link" href="#Edit&Update">Laravel 8 Edit & Update with Image Update</a>
       </li>
       <li><a class="nav-link" href="#Delete_Data">Laravel 8 Delete Data</a></li>
       <li><a class="nav-link" href="#Login_Registration">
@@ -806,6 +806,7 @@ Route::get('students', [StudentController::class, 'index']);
                                 &lt;th>Email&lt;/th>
                                 &lt;th>Course&lt;/th>
                                 &lt;th>Section&lt;/th>
+                                &lt;th>Image&lt;/th>
                                 &lt;th>Edit&lt;/th>
                             &lt;/tr>
                         &lt;/thead>
@@ -817,6 +818,9 @@ Route::get('students', [StudentController::class, 'index']);
                                 &lt;td>{{ $item->email }}&lt;/td>
                                 &lt;td>{{ $item->course }}&lt;/td>
                                 &lt;td>{{ $item->course }}&lt;/td>
+                                &lt;td>
+                                  &lt;img src="{{ asset('assets/uploads/'.$item->image) }}" alt="">
+                                &lt;/td>
                                 &lt;td>
                                     &lt;a href="{{ url('edit-student/'.$item->id) }}" class="btn btn-primary btn-sm">Edit&lt;/a>
                                 &lt;/td>
@@ -880,6 +884,10 @@ Route::get('students', [StudentController::class, 'index']);
                             &lt;input type="text" name="section" value="{{$student->section}}" class="form-control">
                         &lt;/div>
                         &lt;div class="form-group mb-3">
+                          &lt;label for="">Student Image&lt;/label>
+                          &lt;input type="file" name="image" class="form-control">
+                      &lt;/div>                      
+                        &lt;div class="form-group mb-3">
                             &lt;button type="submit" class="btn btn-primary">Update Student&lt;/button>
                         &lt;/div>
 
@@ -937,6 +945,22 @@ class StudentController extends Controller
     public function update(Request $request, $id)
     {
         $student = Student::find($id);
+
+        if($request->hasFile('image'))
+          {
+              $path 'assets/uploads/'.$student->image;
+              if(File::exists($path))
+              {
+                  File::delete($path);
+                }
+              $file $request->file('image');
+              $ext $file->getClientOriginalExtension();
+              $filename - time().'.'.$ext;
+              $file->move('assets/uploads/',$filename);
+              $products->image = $filename;
+          }
+
+
         $student->name = $request->input('name');
         $student->email = $request->input('email');
         $student->course = $request->input('course');
