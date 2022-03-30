@@ -1163,6 +1163,40 @@ class Student extends Model
     ];
 }
           </code></pre>
+          <p><b>Step 3:</b>: Create a controller named StudentController with the following commad:</p>
+          <pre><code class="nohighlight">$ php artisan make:controller StudentController</code></pre>
+          <p>After successful execution of above command, open the StudentController on the following path as: <b>app/Http/Controllers/StudentController.php</b> and paste the below code in it.</p>
+        <p><b>Note: create a folder in your public directory as: uploads/students</b></p>
+        <pre><code class="nohighlight">
+&lt;?php
+
+namespace App\Http\Controllers\API;
+
+use App\Models\Student;
+use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
+
+class StudentController extends Controller
+{
+    public function store(Request $request)
+    {
+        $student = new Student;
+        $student->name = $request->input('name');
+
+        if($request->hasfile('image'))
+        {
+            $file = $request->file('image');
+            $extenstion = $file->getClientOriginalExtension();
+            $filename = time().'.'.$extenstion;
+            $file->move('uploads/students/', $filename);
+            $student->image = $filename;
+        }
+
+        $student->save();
+        return redirect()->back()->with('message','Student Image Upload Successfully');
+    }
+}
+        </code></pre>
         <p><b>Step 4:</b> Create a blade file named <b>studentCreate.blade.php</b> in the following path:
           <b>resources/views/student.blade.php</b> to create a form to upload image.</p>
         <pre><code class="nohighlight">
